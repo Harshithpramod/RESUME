@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Harshit Pramod Resume</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .resume-container {
+            display: flex;
+            width: 100%;
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative; /* Needed for positioning the logout button */
+        }
+
+        /* --- LOGOUT BUTTON STYLES --- */
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background-color: #c0392b; /* A nice red to indicate logout */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            z-index: 100;
+        }
+
+        .logout-btn:hover {
+            background-color: #e74c3c;
+        }
+
+        /* --- LEFT COLUMN STYLES --- */
+        .left-column {
+            flex: 1;
+            background-color: #2c3e50; 
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        /* Photo Area */
+        .photo-container {
+            width: 180px;
+            height: 180px;
+            background-color: #bdc3c7; 
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            border: 5px solid #34495e; 
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Name and Title */
+        h1.name {
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            margin-bottom: 40px;
+            font-weight: normal;
+        }
+
+        /* Left Column Section Headers */
+        .left-section-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            margin-top: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact-item {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .contact-detail {
+            font-size: 14px;
+            color: #bdc3c7; 
+        }
+
+        /* Skills Section & Progress Bars */
+        .skill-item {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 12px;
+            background-color: #1a252f; 
+            border-radius: 6px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #bdc3c7; 
+            border-radius: 6px;
+        }
+
+        /* --- RIGHT COLUMN STYLES --- */
+        .right-column {
+            flex: 1.8;
+            padding: 40px;
+            padding-top: 60px; /* Added padding top to clear the logout button if screen is small */
+            color: #333;
+        }
+
+        /* Right Column Section Headers */
+        .right-section-title {
+            background-color: #2c3e50; 
+            color: white;
+            display: inline-block;
+            padding: 8px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 18px;
+            margin-bottom: 25px;
+            margin-top: 10px; 
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        /* Education Section */
+        ul.education-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        
+        ul.education-list li {
+             margin-bottom: 20px;
+        }
+
+        .edu-degree {
+            font-weight: bold;
+            font-size: 16px;
+            color: #000;
+        }
+
+        .edu-date {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin: 4px 0;
+        }
+
+        .edu-school {
+            font-size: 15px;
+        }
+
+        /* Projects Section */
+        .project-item {
+            margin-bottom: 25px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        
+        <button id="logoutBtn" class="logout-btn">Log out</button>
+
+        <div class="left-column">
+            <div class="photo-container">
+                <img src="harshit_photo.jpg" alt="M Harshit Pramod">
+            </div>
+            
+            <h1 class="name">M Harshit<br>Pramod</h1>
+            <p class="subtitle">B. E. CSE Third Year Student</p>
+
+            <div class="left-section-title">Contact</div>
+            
+            <div class="contact-item">
+                <span class="contact-label">ADDRESS</span>
+                <span class="contact-detail">Bangalore, India</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">PHONE</span>
+                <span class="contact-detail">6363899226</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">EMAIL</span>
+                <span class="contact-detail">harshithpramodm@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-detail">harshith-pramod-m</span>
+            </div>
+
+
+            <div class="left-section-title">Skills</div>
+
+            <div class="skill-item">
+                <span class="skill-name">Web Development</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">AI Tools</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Python</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="right-section-title" style="margin-top: 0;">About Me</div>
+            <p>
+                Motivated and detail-oriented student pursuing a degree in Computer Science. Focused on building intelligent software applications by integrating AI capabilities and data-driven solutions. Driven by a passion for solving real-world problems through innovation and learning.
+            </p>
+
+            <div class="right-section-title" style="margin-top: 30px;">Education</div>
+            <ul class="education-list">
+                <li>
+                    <div class="edu-degree">Intermediate (12th)</div>
+                    <span class="edu-date">2021-2023</span>
+                    <div class="edu-school">Deeksha Centre for learning</div>
+                </li>
+                <li>
+                    <div class="edu-degree">B. E. in Computer Science and Engineering</div>
+                    <span class="edu-date">2023-present</span>
+                    <div class="edu-school">K S School of Engineering and Management</div>
+                </li>
+            </ul>
+
+            <div class="right-section-title" style="margin-top: 10px;">Projects</div>
+            
+            <div class="project-item">
+                <div class="project-title">NutriBot</div>
+                <p>
+                    NutriBot is a web application that helps users achieve their diet and body shaping goals with features like calorie tracking, recipe suggestions, and meal planning. It provides a health-conscious platform to make managing nutrition and finding healthy foods simple and accessible.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">CodeQuest</div>
+                <p>
+                    Developed CodeQuest, an engaging web-based platform using HTML, CSS, and JavaScript, designed to enhance coding skills through interactive challenges and quizzes.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', function () {
+            try { localStorage.removeItem('mybrand_auth'); } catch (e) { /* ignore */ }
+            alert('You have been logged out successfully.');
+            // Redirect to index.html (or login page)
+            window.location.href = 'index.html';
+          });
+        }
+      });
+    </script>
+</body>
+</html>

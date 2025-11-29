@@ -1,0 +1,61 @@
+/* Header layout fixes */
+.site-header .container {
+  position: relative; /* needed so brand-title can be absolutely centered */
+}
+
+/* Logo (left) - force small size even if source image is large */
+.site-logo {
+  width: 64px !important;        /* change to 48/56/64 as you prefer */
+  height: 64px !important;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;            /* optional */
+}
+
+/* Title (center) - absolute centering inside the header container */
+.brand-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f4c5c;
+  pointer-events: none; /* so clicks go to elements beneath (buttons) */
+}
+
+/* Actions (right) - reserve space and keep them on the right */
+.header-actions {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  z-index: 2; /* above title (safe) */
+}
+
+/* Keep left area tidy */
+.header-left {
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+/* Responsive tweaks: on small screens reduce logo/title */
+@media (max-width: 576px) {
+  .site-logo {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .brand-title {
+    font-size: 1.1rem;
+  }
+  .header-actions a { padding: .375rem .5rem; font-size: .9rem; }
+}
+.social-link {
+  font-size: 1.4rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-link:hover {
+  color: #0dcaf0;     /* Bootstrap cyan */
+  transform: translateY(-2px);
+}
