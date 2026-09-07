@@ -37,8 +37,8 @@ if (reg) {
       return;
     }
 
-    // Save new user (without password)
-    const user = { fullname, username, gender, dob };
+    // Save new user (with password)
+    const user = { fullname, username, password, gender, dob };
     localStorage.setItem('mybrand_user', JSON.stringify(user));
 
     msg.textContent = 'Registered successfully! Redirecting to sign in...';
@@ -66,7 +66,7 @@ if (reg) {
         return;
       }
       const user = JSON.parse(stored);
-      if (user.username === loginU) {
+      if (user.username === loginU && user.password === loginP) {
         // logged in (simple flag)
         localStorage.setItem('mybrand_auth', JSON.stringify({ username: user.username, fullname: user.fullname }));
         msg.textContent = 'Login successful! Redirecting to your resume...';
