@@ -79,16 +79,6 @@ if (reg) {
     });
   }
 
-  // Guard resume page - check auth flag
-  const resumeContent = document.getElementById('resumeContent');
-  if (resumeContent) {
-    const auth = localStorage.getItem('mybrand_auth');
-    if (!auth) {
-      alert('You must be signed in to view the resume.');
-      window.location.href = 'index.html';
-    }
-  }
-
   // Logout logic (button lives on resume page header)
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) {
