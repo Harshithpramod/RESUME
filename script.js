@@ -67,8 +67,13 @@ if (reg) {
       }
       const user = JSON.parse(stored);
       if (user.username === loginU && user.password === loginP) {
-        // logged in (simple flag)
-        localStorage.setItem('mybrand_auth', JSON.stringify({ username: user.username, fullname: user.fullname }));
+        // Create auth object with expiration (30 minutes)
+        const authObj = {
+          username: user.username,
+          fullname: user.fullname,
+          expiresAt: Date.now() + (30 * 60 * 1000) // 30 minutes from now
+        };
+        localStorage.setItem('mybrand_auth', JSON.stringify(authObj));
         msg.textContent = 'Login successful! Redirecting to your resume...';
         msg.className = 'text-success';
         setTimeout(() => { window.location.href = 'resume.html'; }, 700);
@@ -87,5 +92,27 @@ if (reg) {
       alert('You have been logged out successfully.');
       window.location.href = 'index.html';
     });
+  }
+  
+  // Check auth status on resume page
+  if (window.location.pathname.includes('resume.html')) {
+    const authData = localStorage.getItem('mybrand_auth');
+    if (!authData) {
+      window.location.href = 'login.html';
+      return;
+    }
+    
+    try {
+      const authObj = JSON.parse(authData);
+      // Check if token has expired
+      if (Date.now() > authObj.expiresAt) {
+        localStorage.removeItem('mybrand_auth');
+        window.location.href = 'login.html';
+        return;
+      }
+    } catch (e) {
+      localStorage.removeItem('mybrand_auth');
+      window.location.href = 'login.html';
+    }
   }
 });
