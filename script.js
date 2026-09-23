@@ -67,8 +67,10 @@ if (reg) {
       }
       const user = JSON.parse(stored);
       if (user.username === loginU && user.password === loginP) {
-        // logged in (simple flag)
-        localStorage.setItem('mybrand_auth', JSON.stringify({ username: user.username, fullname: user.fullname }));
+        // Generate a simple token (insecure but demonstrates server-side concept)
+        const token = btoa(JSON.stringify({ username: user.username, fullname: user.fullname, exp: Date.now() + 3600000 })); // 1 hour expiry
+        // Store token in sessionStorage instead of localStorage for better security
+        sessionStorage.setItem('mybrand_token', token);
         msg.textContent = 'Login successful! Redirecting to your resume...';
         msg.className = 'text-success';
         setTimeout(() => { window.location.href = 'resume.html'; }, 700);
@@ -83,9 +85,31 @@ if (reg) {
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function () {
-      localStorage.removeItem('mybrand_auth');
+      sessionStorage.removeItem('mybrand_token');
       alert('You have been logged out successfully.');
       window.location.href = 'index.html';
     });
+  }
+  
+  // Protect resume.html by checking for valid token
+  if (window.location.pathname.includes('resume.html')) {
+    const token = sessionStorage.getItem('mybrand_token');
+    if (!token) {
+      alert('Unauthorized access. Please log in.');
+      window.location.href = 'login.html';
+      return;
+    }
+    
+    try {
+      const payload = JSON.parse(atob(token.split('.')[0])); // Simple decode (not production safe)
+      if (payload.exp < Date.now()) {
+        throw new Error('Token expired');
+      }
+    } catch (e) {
+      alert('Session expired or invalid. Please log in again.');
+      sessionStorage.removeItem('mybrand_token');
+      window.location.href = 'login.html';
+      return;
+    }
   }
 });
